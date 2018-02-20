@@ -36,4 +36,31 @@ def findprimefactors( x ):
 	
 	return factors
 
+def check_is_prime ( x ) :
+
+	checkme = float(x)
+	if ( not checkme.is_integer()) :
+		return False
+	
+	# if divisible by 2, no good.
+	if( (checkme / 2).is_integer()) :
+		if( checkme == 2 ) :
+			return True
+		return False
+	
+	# test odd factors from here on.
+	tryodds = 3
+	
+	primechecked = False
+	while( not primechecked ) :
+		# append it to the list if our prime factor divides well
+		if( (checkme / tryodds).is_integer()) :
+			if( checkme == tryodds ) :	
+				return True
+			else :
+				primechecked = True
+		# increment our prime by 2 (maintains property of being odd)
+		tryodds += 2
+	
+	return False
 
